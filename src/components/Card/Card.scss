@@ -1,0 +1,108 @@
+.card {
+  &__list {
+    display: flex;
+    flex-direction: column;
+    padding: 0;
+  }
+
+  &__item {
+    min-width: 100%;
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+    background-color: rgb(248, 248, 248);
+    padding: 40px;
+    border-radius: 20px;
+
+    &.like {
+      margin-bottom: 0;
+      background-color: #fff;
+      padding: 20px;
+      border-radius: 10px;
+      box-shadow: rgba(0, 0, 0, 0.1) 0 10px 15px -3px,
+        rgba(0, 0, 0, 0.05) 0 4px 6px -2px;
+    }
+  }
+
+  &__content {
+    width: 100%;
+  }
+
+  &__img-message {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    height: 40px;
+    width: 40px;
+    margin-right: 20px;
+    padding: 10px;
+    background-color: white;
+    border-radius: 50%;
+  }
+
+  &__id-field {
+    font-weight: 500;
+    font-size: 10px;
+    color: rgb(171, 171, 171);
+  }
+
+  &__id-link {
+    color: rgb(142, 167, 255);
+    word-break: break-word;
+    margin-right: 5px;
+    text-transform: none;
+  }
+
+  &__text {
+    margin: 12px 0;
+    overflow-wrap: break-word;
+    word-break: break-word;
+    white-space: pre-wrap;
+    font-size: 18px;
+    line-height: 1.45;
+    text-transform: none;
+    font-weight: 400;
+    line-height: 1.45;
+    margin-bottom: 17px;
+    color: rgb(46, 46, 46);
+
+    &.favorite {
+      font-weight: bold;
+    }
+  }
+
+  &__last-update {
+    font-size: 10px;
+    color: rgb(171, 171, 171);
+    text-transform: none;
+  }
+}
+
+.card-btn {
+  &__wrap {
+    display: flex;
+    margin-top: 5px;
+  }
+
+  &__like {
+    padding: 0;
+    align-self: flex-end;
+    border: 0;
+    background-color: transparent;
+    cursor: pointer;
+  }
+
+  &__heard {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    margin: -1px;
+    border: 0;
+    padding: 0;
+    white-space: nowrap;
+    clip-path: inset(100%);
+    clip: rect(0px, 0px, 0px, 0px);
+    overflow: hidden;
+  }
+}
