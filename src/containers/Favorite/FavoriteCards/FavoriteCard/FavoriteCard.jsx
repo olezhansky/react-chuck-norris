@@ -2,11 +2,11 @@ import React from 'react'
 import styles from './FavoriteCard.module.scss'
 import {useDispatch} from 'react-redux'
 import { removeFavoriteJokeAction } from '../../../../store/favorites/actions'
+
 const FavoriteCard = ({ card }) => {
-    const dispatch = useDispatch()
+    const dispatch = useDispatch();
     const handleLike = () => {
-        // console.log("DISLIKE");  
-        dispatch(removeFavoriteJokeAction(card.id))             
+        dispatch(removeFavoriteJokeAction(card.id));            
     }
     return (
         <li className={styles.FavoriteCard}>
@@ -23,9 +23,8 @@ const FavoriteCard = ({ card }) => {
                         <p className={styles.CardContentTime}>Last update: {card.updated_at} </p>
                     </div>
             </div>
-           
         </li>
     )
 }
 
-export default FavoriteCard
+export default FavoriteCard;

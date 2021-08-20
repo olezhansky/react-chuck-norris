@@ -1,7 +1,9 @@
 .card_block {
   margin-top: 40px;
 }
-.card_block_ul {
-  margin: 0;
-  padding: 0;
+.img_block {
+  margin-top: 25px;
+  img {
+    max-width: 200px;
+  }
 }
