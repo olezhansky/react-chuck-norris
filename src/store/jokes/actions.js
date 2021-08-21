@@ -12,3 +12,11 @@ export function fetchJokes(selectedCategory, query) {
         })
     }
 }
+
+export const paginateAction = (pageNumber) => ({
+    type: types.PAGINATE_PAGE_NUMBER,
+    payload: { pageNumber },
+  });
+export const currentPageAction = () => ({
+    type: types.CURRENT_PAGE_ACTION,
+  });

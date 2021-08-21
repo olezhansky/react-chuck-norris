@@ -6,7 +6,6 @@ const initialState = [];
 const favoriteReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.ADD_FAVORITE: {
-            // console.log(state);
           const existJoke = state.find(
             (favorite) => favorite.id === action.payload.joke.id
           );
@@ -20,6 +19,9 @@ const favoriteReducer = (state = initialState, action) => {
             (favorite) => favorite.id !== action.payload.cardId
           );
           return newFavorite  
+        }
+        case types.FAVORITES_FROM_LOCAL_STORAGE: {
+          return action.payload  
         }
         default:
             return state; 

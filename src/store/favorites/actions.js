@@ -1,4 +1,4 @@
-import { ADD_FAVORITE } from "./types"
+import { ADD_FAVORITE, FAVORITES_FROM_LOCAL_STORAGE } from "./types"
 
 
 export const addFavoriteJokeAction = joke => {
@@ -15,3 +15,7 @@ export const removeFavoriteJokeAction = id => {
     }
 }
 
+export const favoritesFromLocalStorageAction = (favoritesFromLocalStorageAction) => ({
+    type: FAVORITES_FROM_LOCAL_STORAGE,
+    payload: JSON.parse(favoritesFromLocalStorageAction)
+})

@@ -19,7 +19,7 @@ const localStorageMiddleware =
     ) {
       const { favorite } = getState();
       const stringifiedFavorite = JSON.stringify(favorite);
-      localStorage.setItem("favorite", stringifiedFavorite);
+      localStorage.setItem("favorites", stringifiedFavorite);
     }
     return result;
   };

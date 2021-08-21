@@ -5,8 +5,6 @@ import {useSelector} from 'react-redux'
 
 const FavoriteCards = () => {
   const favoriteCards = useSelector(state => state.favorite)
-  // console.log({ favoriteCards });
-
     return (
         <ul className={styles.FavoriteCards}>
           {favoriteCards.map(card => (
@@ -16,4 +14,4 @@ const FavoriteCards = () => {
     )
 }
 
-export default FavoriteCards
+export default FavoriteCards;

@@ -7,7 +7,7 @@ const Favorite = () => {
     const favoriteAmount = useSelector(state => state.favorite.length);
     return (
         <div className={styles.Favorite}>
-           <h3>Favorite ({favoriteAmount})</h3> 
+           <h3>Favorite {favoriteAmount !== 0 && `(${favoriteAmount})`}</h3> 
            <FavoriteCards />
         </div>
     )

@@ -5,12 +5,12 @@ import CardsBlock from '../../components/Card/CardsBlock'
 import getJoke from '../../api/getJokes'
 import styles from './Main.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
-import { fetchJokes } from '../../store/jokes/actions'
+import { currentPageAction, fetchJokes } from '../../store/jokes/actions'
+import Pagination from '../../components/Pagination/Pagination'
+import noJokes from '../../assets/img/noJokes.png';
 
 
 const Main = props => {
-    // const [jokes, setJoke] = useState('');
-    // const jokes = useSelector(state => state.jokes)
     const [selectedCategory, setSelectedCategory] = useState(null)
     const [query, setQuery] = useState(null)
 
@@ -27,6 +27,7 @@ const Main = props => {
     }
     const handleGetJoke = () => {
         dispatch(fetchJokes(selectedCategory, query))
+        dispatch(currentPageAction());
     }
     
     const handleCategoryChange = category => {
@@ -37,15 +38,41 @@ const Main = props => {
         setQuery(query)
     }
 
+    const jokes = useSelector(state => state.jokes.jokes)
+    const currentPage = useSelector(state => state.jokes.currentPage)
+    const jokesPerPage = useSelector(state => state.jokes.jokesPerPage)
+
+    const lastJokesIndex = currentPage * jokesPerPage;
+    const firstJokesIndex = lastJokesIndex - jokesPerPage;
+    const currentJokes = (
+        jokes.slice(firstJokesIndex, lastJokesIndex)
+    );
+
+    console.log(currentJokes);
+    console.log(jokes);
+
     return (
         <div className={styles.Main}>
             <Header />
             <h2 className={styles.Title}>Hey!</h2>
             <p className={styles.Text}>Let's try to find a joke for you:</p>
             <Form clearState={clearState} onClick={handleGetJoke} onCategoryChange={handleCategoryChange} onQueryChange={handleQueryChange} />
-            <CardsBlock />
+            {currentJokes && <CardsBlock jokes={currentJokes}/>}
+            {currentJokes.length === 0 && <CardsBlock jokes={jokes}/>}
+            {currentJokes.length === 0 && jokes.length === 0 && <div className={styles.img_block}>
+                <img src={noJokes} alt={noJokes}/>
+            </div>}
+            
+            
+            
+            {jokes.length > 1 && <Pagination  
+                currentPage={currentPage}
+                jokesPerPage={jokesPerPage}
+                totalJokes={jokes.length}
+            />}
+            
         </div>
     )
 }
 
-export default Main
+export default Main;
