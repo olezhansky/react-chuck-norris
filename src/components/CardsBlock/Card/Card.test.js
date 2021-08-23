@@ -1,7 +1,7 @@
 import Card from './Card'
 import { createStore } from 'redux'
 import { Provider } from 'react-redux'
-import { rootReducer } from './../../store/store'
+import { rootReducer } from '../../../store/store'
 import { render } from '@testing-library/react'
 
 let store = createStore(rootReducer, {

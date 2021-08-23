@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './Favorite.module.scss'
-import FavoriteCards from './FavoriteCards/FavoriteCards'
 import {useSelector} from 'react-redux'
+import FavoriteCards from '../../components/FavoriteCards/FavoriteCards';
 
 const Favorite = () => {
     const favoriteAmount = useSelector(state => state.favorite.length);

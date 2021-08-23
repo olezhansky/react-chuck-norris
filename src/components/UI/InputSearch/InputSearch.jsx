@@ -1,11 +1,7 @@
-import React, {useEffect, useRef, useState} from 'react'
+import React, { useEffect, useRef } from 'react'
 import styles from './InputSearch.module.scss'
 
-
-
 const InputSearch = ({onQuery}) => {
-
-    // const [value, setValue] = useState('')
 
     const inputEl = useRef(null)    
     useEffect(() => {        
@@ -13,8 +9,7 @@ const InputSearch = ({onQuery}) => {
      }, [])
 
      const onChange = (event) => {
-         console.log(event);
-         onQuery(event)
+        onQuery(event)
      }
 
     return (

@@ -1,4 +1,4 @@
-import React, {useRef, useState} from 'react'
+import React, { useState } from 'react'
 import Categories from '../Categories/Categories'
 import Button from '../UI/Button/Button'
 import InputRadio from '../UI/InputRadio/InputRadio'
@@ -15,7 +15,6 @@ const Form = ({onClick, onCategoryChange, onQueryChange, clearState}) => {
     const [check, setCheck ] = useState('random')
     
     const handleChange = (id)=> {
-        // console.log("Click radio");
         setCheck(id)
         clearState()
         

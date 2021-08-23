@@ -1,9 +1,9 @@
-import React, { useState } from 'react'
+import React from 'react'
 import classNames from 'classnames'
 import "./Card.scss"
-import LikeButtonIcon from '../icons/LikeButtonIcon'
 import {useDispatch, useSelector} from 'react-redux'
-import { addFavoriteJokeAction, removeFavoriteJokeAction } from '../../store/favorites/actions'
+import { addFavoriteJokeAction, removeFavoriteJokeAction } from '../../../store/favorites/actions'
+import LikeButtonIcon from '../../../assets/icons/LikeButtonIcon'
 
 const Card = ({joke}) => {  
     const dispatch = useDispatch()
@@ -41,7 +41,7 @@ const Card = ({joke}) => {
                 </span>
                 <div className="card__content">
                     <span className="card__id-field">ID:
-                        <a className="card__id-link" href={joke.id} target="_blank">{joke.id}</a>
+                        <a className="card__id-link" href={joke.id} target="_blank" rel="noreferrer">{joke.id}</a>
                         <svg width="10" className="link-icon" height="10" viewBox="0 0 10 10" fill="none" xmlns="http://www.w3.org/2000/svg">
                             <path d="M9.54545 0H5.90909C5.65806 0 5.45454 0.203515 5.45454 0.45455C5.45454 0.705585 5.65806 0.9091 5.90909 0.9091H8.44809L3.76952 5.58768C3.59204 5.76516 3.59204 6.05298 3.76952 6.2305C3.85825 6.31923 3.97458 6.36362 4.09091 6.36362C4.20724 6.36362 4.32359 6.31923 4.4123 6.23048L9.09092 1.55191V4.09091C9.09092 4.34194 9.29444 4.54546 9.54547 4.54546C9.7965 4.54546 10 4.34194 10 4.09091V0.45455C10 0.203515 9.79648 0 9.54545 0Z"
                             fill="#8EA7FF"></path>

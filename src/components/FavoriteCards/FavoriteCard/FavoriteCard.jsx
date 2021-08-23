@@ -1,7 +1,7 @@
 import React from 'react'
 import styles from './FavoriteCard.module.scss'
-import {useDispatch} from 'react-redux'
-import { removeFavoriteJokeAction } from '../../../../store/favorites/actions'
+import { useDispatch } from 'react-redux'
+import { removeFavoriteJokeAction } from '../../../store/favorites/actions'
 
 const FavoriteCard = ({ card }) => {
     const dispatch = useDispatch();

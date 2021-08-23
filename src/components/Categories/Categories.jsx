@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react'
 import getCategories from '../../api/getCategories'
 import Category from './Category'
-import './categories.scss'
+import './Categories.scss';
 
 
 const Categories = ({onSelect }) => {
@@ -14,15 +14,21 @@ const Categories = ({onSelect }) => {
         })        
     }, [])
     
-    const handleCategorySelect =(category)=> {
+    const handleCategorySelect = (category) => {
         setcategoryIsSelected(category)
     }
 
     return (
-        <ul >{categories.map((category, index) =>{
-            return <Category onSelect={onSelect} key={index} category={category} categorySelect={handleCategorySelect}categoryClassList={categoryIsSelected ==category ? "category active" : "category"}/>
-        })}</ul>
+        <ul className="CategoriesList">
+            {categories.map((category, index) => {
+                return <Category 
+                    onSelect={onSelect} 
+                    key={index} category={category} 
+                    categorySelect={handleCategorySelect}
+                    categoryClassList={categoryIsSelected === category ? "category active" : "category"}/>
+            })}
+        </ul>
     )
 }
 
-export default Categories
+export default Categories;

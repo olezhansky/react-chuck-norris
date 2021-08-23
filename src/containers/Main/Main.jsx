@@ -1,16 +1,15 @@
 import React, { useEffect, useState }from 'react'
 import Header from '../../components/Header/Header'
 import Form from '../../components/Form/Form'
-import CardsBlock from '../../components/Card/CardsBlock'
-import getJoke from '../../api/getJokes'
 import styles from './Main.module.scss'
 import { useDispatch, useSelector } from 'react-redux'
 import { currentPageAction, fetchJokes } from '../../store/jokes/actions'
 import Pagination from '../../components/Pagination/Pagination'
 import noJokes from '../../assets/img/noJokes.png';
+import CardsBlock from '../../components/CardsBlock/CardsBlock'
 
 
-const Main = props => {
+const Main = () => {
     const [selectedCategory, setSelectedCategory] = useState(null)
     const [query, setQuery] = useState(null)
 
@@ -18,7 +17,7 @@ const Main = props => {
 
     useEffect(() => {
         dispatch(fetchJokes())
-    }, [])
+    }, [dispatch])
 
     const clearState = () => {
         console.log("Clear state");
@@ -62,9 +61,6 @@ const Main = props => {
             {currentJokes.length === 0 && jokes.length === 0 && <div className={styles.img_block}>
                 <img src={noJokes} alt={noJokes}/>
             </div>}
-            
-            
-            
             {jokes.length > 1 && <Pagination  
                 currentPage={currentPage}
                 jokesPerPage={jokesPerPage}

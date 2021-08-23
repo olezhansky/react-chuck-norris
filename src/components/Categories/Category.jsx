@@ -1,5 +1,5 @@
-import React, { useState }from 'react'
-import './categories.scss'
+import React from 'react'
+import './Categories.scss'
 
 const Category = ({onSelect, category, categorySelect, categoryClassList}) => {
     
