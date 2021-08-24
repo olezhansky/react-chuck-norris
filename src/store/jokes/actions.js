@@ -20,3 +20,6 @@ export const paginateAction = (pageNumber) => ({
 export const currentPageAction = () => ({
     type: types.CURRENT_PAGE_ACTION,
   });
+export const clearJokesAction = () => ({
+    type: types.CLEAR_JOKES_ACTION,
+  });

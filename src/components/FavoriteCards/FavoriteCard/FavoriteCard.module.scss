@@ -22,6 +22,9 @@
   padding: 15px;
   border-radius: 50%;
   margin-right: 15px;
+  @media (max-width: 1024px) {
+    display: none;
+  }
 }
 .CardMainIcon i {
   color: #ccc;

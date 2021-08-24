@@ -3,14 +3,15 @@ import styles from './InputSearch.module.scss'
 
 const InputSearch = ({onQuery}) => {
 
-    const inputEl = useRef(null)    
+    const inputEl = useRef(null);
+
     useEffect(() => {        
          inputEl.current.focus();       
      }, [])
 
-     const onChange = (event) => {
+    const onChange = (event) => {
         onQuery(event)
-     }
+    }
 
     return (
         <div className={styles.Wrapper}>
@@ -25,4 +26,4 @@ const InputSearch = ({onQuery}) => {
     )
 }
 
-export default InputSearch
+export default InputSearch;

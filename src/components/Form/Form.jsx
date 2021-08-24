@@ -23,9 +23,9 @@ const Form = ({onClick, onCategoryChange, onQueryChange, clearState}) => {
         <form onSubmit={onSubmit} className={styles.form}>
             <InputRadio onChange={handleChange} currentId={check} id="random" name="options" label="Random"/>
             <InputRadio onChange={handleChange} currentId={check} id="categories" name="options" label="Form categories" />            
-             {check ==='categories'&& <Categories onSelect={onCategoryChange}/>}              
+             {check ==='categories' && <Categories onSelect={onCategoryChange}/>}              
             <InputRadio onChange={handleChange} currentId={check} id="search" name="options" label="Search"/>
-            {check ==='search'&& (
+            {check ==='search' && (
                 <InputSearch onQuery={onQueryChange}/>
             )}
             <Button onClick={onClick}/>

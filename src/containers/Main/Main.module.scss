@@ -1,12 +1,15 @@
 .Main {
   background-color: #fff;
-  // max-width: 550px;
-  //   max-width: 70%;
   padding-left: 140px;
   padding-right: 140px;
   flex: 1 1 auto;
   overflow-y: auto;
   max-height: 100vh;
+  position: relative;
+  @media (max-width: 768px) {
+    padding-left: 50px;
+    padding-right: 15px;
+  }
 }
 .Title {
   margin-top: 80px;
@@ -21,6 +24,10 @@
   font-size: 24px;
   line-height: 24px;
 }
+.CardsBlock {
+  min-height: 200px;
+}
+
 .Main::-webkit-scrollbar-track {
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   border-radius: 10px;
@@ -36,4 +43,17 @@
   border-radius: 10px;
   -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
   background-color: rgb(128, 182, 243);
+}
+.ImgBlock {
+  margin-top: 15px;
+  img {
+    max-width: 200px;
+  }
+}
+
+.Loader {
+  position: absolute;
+  bottom: 1%;
+  left: 50%;
+  transform: translateX(-50%);
 }

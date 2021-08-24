@@ -57,9 +57,6 @@ const Pagination = ({jokesPerPage, totalJokes, currentPage}) => {
             {pageNumber}
           </div>
       ))}
-      {pageNumbers.length > 5 &&  <span>. . .</span>}
-      {/* {pageNumbers.length > 5 && currentPage < pageNumbers.length / 3 - currentPage + 3 && <span>. . .</span>} */}
-      
         <FaChevronRight
           className={styles.ButtonNext}
           onClick={handlePaginateRight}
