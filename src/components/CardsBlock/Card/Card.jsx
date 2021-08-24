@@ -52,6 +52,9 @@ const Card = ({joke}) => {
                     <p className={classNames('card__text', { favorite: isFavorite })}>{joke.value}</p>
                     <span className="card__last-update">Last update {joke.updated_at}</span>
                 </div>
+                <div>
+                    <img src={joke.icon_url}/>
+                </div>
             </div>
         </li>
     )

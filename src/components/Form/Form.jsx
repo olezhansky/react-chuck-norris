@@ -5,8 +5,6 @@ import InputRadio from '../UI/InputRadio/InputRadio'
 import InputSearch from '../UI/InputSearch/InputSearch'
 import styles from './Form.modules.scss'
 
-
-
 const Form = ({onClick, onCategoryChange, onQueryChange, clearState}) => {
 
     const onSubmit = (event) => {
@@ -16,9 +14,9 @@ const Form = ({onClick, onCategoryChange, onQueryChange, clearState}) => {
     
     const handleChange = (id)=> {
         setCheck(id)
-        clearState()
-        
+        clearState() 
     }
+
     return (
         <form onSubmit={onSubmit} className={styles.form}>
             <InputRadio onChange={handleChange} currentId={check} id="random" name="options" label="Random"/>
@@ -33,4 +31,4 @@ const Form = ({onClick, onCategoryChange, onQueryChange, clearState}) => {
     )
 }
 
-export default Form
+export default Form;

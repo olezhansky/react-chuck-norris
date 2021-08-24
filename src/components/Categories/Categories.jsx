@@ -10,7 +10,7 @@ const Categories = ({onSelect }) => {
     useEffect(() => {
         getCategories()
         .then(categories => {
-            setCategories(categories)
+            setCategories(categories.data)
         })        
     }, [])
     

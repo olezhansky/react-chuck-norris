@@ -10,6 +10,7 @@ const Pagination = ({jokesPerPage, totalJokes, currentPage}) => {
     const dispatch = useDispatch();
 
     const pageNumbers = [];
+    
     for (let i = 1; i <= Math.ceil(totalJokes / jokesPerPage); i++) {
         pageNumbers.push(i);
     }

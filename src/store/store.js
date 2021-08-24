@@ -31,10 +31,6 @@ export const rootReducer = combineReducers({
 
 const store = createStore(
   rootReducer,
-  // {
-  //   jokes: [],
-  //   favorite: JSON.parse(localStorage.getItem("favorite")) || [],
-  // },
   compose(applyMiddleware(thunk, localStorageMiddleware), devTools)
 );
 

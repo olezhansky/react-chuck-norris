@@ -1,15 +1,19 @@
+import axios from 'axios'
+
 const getJokes = (category, query) => {
   const url = new URL("https://api.chucknorris.io/jokes/random");
   if (category) {
     const params = { category };
     url.search = new URLSearchParams(params).toString();
   } else if (query) {
-    return fetch(
+    return axios.get(
       `https://api.chucknorris.io/jokes/search?query=${query}`
-    ).then((response) => response.json());
+    )
   }
-  return fetch(url).then((response) => response.json());
+  return axios.get(url)
 };
 
 export default getJokes;
+
+
 

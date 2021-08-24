@@ -1,6 +1,7 @@
-const getCategories = () => {
-   return fetch('https://api.chucknorris.io/jokes/categories')
-        .then(response => response.json())
-}
+import axios from 'axios';
 
+const getCategories = () => (
+  axios.get('https://api.chucknorris.io/jokes/categories')
+)
+        
 export default getCategories

@@ -4,10 +4,11 @@ import * as types from './types'
 export function fetchJokes(selectedCategory, query) {
     return function (dispatch) {
         getJokes(selectedCategory, query).then(response => {
-            if (response.hasOwnProperty('total')) {
-                dispatch({type: types.SET_JOKES, payload: { jokes: response.result }})
+            console.log(response.data);
+            if (response.data.hasOwnProperty('total')) {
+                dispatch({type: types.SET_JOKES, payload: { jokes: response.data.result }})
             } else {
-                dispatch({type: types.SET_JOKES, payload: { jokes: [response] }})
+                dispatch({type: types.SET_JOKES, payload: { jokes: [response.data] }})
             }
         })
     }

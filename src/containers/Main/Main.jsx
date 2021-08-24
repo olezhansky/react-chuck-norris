@@ -48,6 +48,8 @@ const Main = () => {
         jokes.slice(firstJokesIndex, lastJokesIndex)
     );
 
+    console.log(jokes);
+
     return (
         <div className={styles.Main}>
             <Header />
