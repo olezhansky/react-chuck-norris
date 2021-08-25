@@ -1,14 +1,14 @@
 .Favorite {
   background-color: rgb(248, 248, 248);
   height: 100vh;
-  padding: 20px 40px 0px;
+  padding: 40px 10px 30px 20px;
   position: relative;
   overflow-y: scroll;
   @media (max-width: 768px) {
     overflow-y: scroll;
     background-color: rgb(248, 248, 248);
     height: 100%;
-    padding: 20px 40px 0px;
+    padding: 40px 10px 30px 20px;
     right: -400px;
     transition: .3s ease;
     position: fixed;
