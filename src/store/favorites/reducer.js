@@ -6,6 +6,10 @@ const initialState = [];
 const favoriteReducer = (state = initialState, action) => {
     switch (action.type) {
         case types.ADD_FAVORITE: {
+          const { joke } = action.payload;
+          console.log(joke);
+          joke.order = Date.now();
+          console.log(joke);
           const existJoke = state.find(
             (favorite) => favorite.id === action.payload.joke.id
           );
@@ -23,8 +27,18 @@ const favoriteReducer = (state = initialState, action) => {
         case types.FAVORITES_FROM_LOCAL_STORAGE: {
           return action.payload  
         }
+        case types.FAVORITE_CARD_CHANGE_ORDER:
+          return state.map(t => {
+              if (t.id === action.payload.favoriteCard.id) {
+                return {...t, order: action.payload.currentFavoriteCard.order}
+              }
+              if (t.id === action.payload.currentFavoriteCard.id) {
+                return {...t, order: action.payload.favoriteCard.order}
+              }
+              return t
+            })
         default:
-            return state; 
+            return state
     }
 }
 

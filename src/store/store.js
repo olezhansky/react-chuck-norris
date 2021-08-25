@@ -15,7 +15,8 @@ const localStorageMiddleware =
     const result = next(action);
     if (
       action.type === favoriteTypes.ADD_FAVORITE ||
-      action.type === favoriteTypes.REMOVE_FAVORITE
+      action.type === favoriteTypes.REMOVE_FAVORITE ||
+      action.type === favoriteTypes.FAVORITE_CARD_CHANGE_ORDER
     ) {
       const { favorite } = getState();
       const stringifiedFavorite = JSON.stringify(favorite);

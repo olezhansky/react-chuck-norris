@@ -17,6 +17,7 @@ const Pagination = ({jokesPerPage, totalJokes, currentPage}) => {
     const handlePaginate = (pageNumber) => {
         dispatch(paginateAction(pageNumber));
     };
+    console.log(pageNumbers);
 
     const [firstCurrentpage, setFirstCurrentpage] = useState(0);
     const [lastCurrentPage, setLastCurrentPage] = useState(5);
@@ -58,6 +59,16 @@ const Pagination = ({jokesPerPage, totalJokes, currentPage}) => {
             {pageNumber}
           </div>
       ))}
+      {pageNumbers.length > 5 && pageNumbers.length - currentPage < pageNumbers.length % 5 && pageNumbers.length % 5 > 0 
+        ? null 
+        : <span className={styles.PaginationPints}>. . .</span>
+      }
+      &nbsp;
+      &nbsp;
+      {pageNumbers.length - currentPage < pageNumbers.length % 5 && pageNumbers.length % 5 > 0 
+        ? null 
+        : <span className={styles.PaginationLastPage}>{pageNumbers.length}</span>
+      }
         <FaChevronRight
           className={styles.ButtonNext}
           onClick={handlePaginateRight}

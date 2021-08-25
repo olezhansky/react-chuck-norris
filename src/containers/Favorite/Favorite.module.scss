@@ -15,6 +15,20 @@
     z-index: 1000;
   }
 }
+.FavoriteTitle {
+  font-size: 20px;
+  color: rgb(171, 171, 171);
+  font-weight: 500;
+}
+.FavoriteText {
+  margin-top: 15px;
+  font-size: 12px;
+  line-height: 12px;
+  color: rgb(171, 171, 171);
+  @media (max-width: 480px) {
+    display: none;
+  }
+}
 .FavoriteShow {
   @media (max-width: 768px) {
     overflow-y: scroll;
@@ -22,7 +36,7 @@
     transition: .3s ease;
     background-color: rgb(248, 248, 248);
     min-height: 100%;
-    padding: 20px 40px 0px;
+    padding: 40px 10px 30px 20px;
     position: absolute;
     z-index: 1000;
     box-shadow: 0px 0px 10px 0px lightblue;
@@ -31,11 +45,6 @@
     padding: 40px 10px 30px 20px;
     width: 100vw;
   } 
-}
-.Favorite h3 {
-  font-size: 20px;
-  color: rgb(171, 171, 171);
-  font-weight: 500;
 }
 .FavoriteClose {
   position: absolute;

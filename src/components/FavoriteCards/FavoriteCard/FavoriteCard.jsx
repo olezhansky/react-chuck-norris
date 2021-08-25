@@ -3,13 +3,21 @@ import styles from './FavoriteCard.module.scss'
 import { useDispatch } from 'react-redux'
 import { removeFavoriteJokeAction } from '../../../store/favorites/actions'
 
-const FavoriteCard = ({ card }) => {
+const FavoriteCard = ({ favoriteCard, dragStart, dragEnd, dragOver, drop }) => {
     const dispatch = useDispatch();
     const handleLike = () => {
-        dispatch(removeFavoriteJokeAction(card.id));            
+        dispatch(removeFavoriteJokeAction(favoriteCard.id));            
     }
     return (
-        <li className={styles.FavoriteCard}>
+        <li 
+            className={styles.FavoriteCard}
+            onDragStart={e => dragStart(e, favoriteCard)}
+            onDragLeave={e => dragEnd(e)}
+            onDragEnd={e => dragEnd(e)}
+            onDragOver={e => dragOver(e)}
+            onDrop={e => drop(e, favoriteCard)}
+            draggable={true}
+        >
             <div className={styles.Like}>
                 <i className="fas fa-heart" onClick={handleLike}/>
             </div>
@@ -18,9 +26,9 @@ const FavoriteCard = ({ card }) => {
                         <i className="far fa-comment-alt"></i>
                     </div>
                     <div className={styles.CardContentText}>
-                        <p className={styles.CardContentTextId}>{card.id}</p>
-                        <p className={styles.CardContentTextJoke}>{card.value}</p>
-                        <p className={styles.CardContentTime}>Last update: {card.updated_at} </p>
+                        <p className={styles.CardContentTextId}>{favoriteCard.id}</p>
+                        <p className={styles.CardContentTextJoke}>{favoriteCard.value}</p>
+                        <p className={styles.CardContentTime}>Last update: {favoriteCard.updated_at} </p>
                     </div>
             </div>
         </li>

@@ -15,7 +15,8 @@ const Favorite = () => {
     return (
         <>
             <div className={toggle ? styles.FavoriteShow : styles.Favorite}>
-                <h3>Favorite {favoriteAmount !== 0 && `(${favoriteAmount})`}</h3> 
+                <h3 className={styles.FavoriteTitle}>Favorite {favoriteAmount !== 0 && `(${favoriteAmount})`}</h3> 
+                <p className={styles.FavoriteText}>Drag-end-drop*</p>
                 <FavoriteCards />
                 <div 
                     className={styles.FavoriteClose}
