@@ -1,12 +1,12 @@
 import React, { useState } from 'react';
 import { FaChevronLeft, FaChevronRight } from 'react-icons/fa';
 import classNames from 'classnames';
-import styles from './Pagination.module.scss';
+import PropTypes from 'prop-types';
 import { useDispatch } from 'react-redux';
+import styles from './Pagination.module.scss';
 import { paginateAction } from '../../store/jokes/actions';
 
 const Pagination = ({jokesPerPage, totalJokes, currentPage}) => {
-
     const dispatch = useDispatch();
 
     const pageNumbers = [];
@@ -17,7 +17,6 @@ const Pagination = ({jokesPerPage, totalJokes, currentPage}) => {
     const handlePaginate = (pageNumber) => {
         dispatch(paginateAction(pageNumber));
     };
-    console.log(pageNumbers);
 
     const [firstCurrentpage, setFirstCurrentpage] = useState(0);
     const [lastCurrentPage, setLastCurrentPage] = useState(5);
@@ -26,29 +25,30 @@ const Pagination = ({jokesPerPage, totalJokes, currentPage}) => {
         if (currentPage <= pageNumbers.length - 1) {
           dispatch(paginateAction(currentPage + 1));
           if (currentPage % 5 === 0) {
-            setFirstCurrentpage(firstCurrentpage => firstCurrentpage + 5)
-            setLastCurrentPage(lastCurrentPage => lastCurrentPage + 5)
-          } 
+            setFirstCurrentpage((prevState) => prevState + 5);
+            setLastCurrentPage((prevState) => prevState + 5);
+          }
         }
       };
       const handlePaginateLeft = () => {
         if (currentPage > 1) {
           dispatch(paginateAction(currentPage - 1));
           if ((currentPage + 1) % 5 === 2) {
-            setFirstCurrentpage(firstCurrentpage => firstCurrentpage - 5)
-            setLastCurrentPage(lastCurrentPage => lastCurrentPage - 5)
-          } 
+            setFirstCurrentpage((prevState) => prevState - 5);
+            setLastCurrentPage((prevState) => prevState - 5);
+          }
         }
       };
 
     return (
-        <div className={styles.Pagination}>
+      <div className={styles.Pagination}>
         <FaChevronLeft
           className={styles.ButtonPrev}
           onClick={handlePaginateLeft}
         />
         {pageNumbers.slice(firstCurrentpage, lastCurrentPage).map((pageNumber) => (
           <div
+            role="presentation"
             className={classNames({
             [styles.PaginationItem]: true,
             [styles.PaginationItem_active]: currentPage === pageNumber,
@@ -59,22 +59,33 @@ const Pagination = ({jokesPerPage, totalJokes, currentPage}) => {
             {pageNumber}
           </div>
       ))}
-      {pageNumbers.length > 5 && pageNumbers.length - currentPage < pageNumbers.length % 5 && pageNumbers.length % 5 > 0 
-        ? null 
-        : <span className={styles.PaginationPints}>. . .</span>
-      }
+        {pageNumbers.length > 5 && pageNumbers.length - currentPage < pageNumbers.length % 5
+          && pageNumbers.length % 5 > 0
+          ? null
+          : <span className={styles.PaginationPints}>. . .</span>}
       &nbsp;
       &nbsp;
-      {pageNumbers.length - currentPage < pageNumbers.length % 5 && pageNumbers.length % 5 > 0 
-        ? null 
-        : <span className={styles.PaginationLastPage}>{pageNumbers.length}</span>
-      }
+        {pageNumbers.length - currentPage < pageNumbers.length % 5 && pageNumbers.length % 5 > 0
+        ? null
+        : <span className={styles.PaginationLastPage}>{pageNumbers.length}</span>}
         <FaChevronRight
           className={styles.ButtonNext}
           onClick={handlePaginateRight}
         />
       </div>
-    )
-}
+    );
+};
+
+Pagination.propTypes = {
+    jokesPerPage: PropTypes.number,
+    totalJokes: PropTypes.number,
+    currentPage: PropTypes.number,
+};
+
+Pagination.defaultProps = {
+  jokesPerPage: 1,
+  totalJokes: 1,
+  currentPage: 1,
+};
 
 export default Pagination;

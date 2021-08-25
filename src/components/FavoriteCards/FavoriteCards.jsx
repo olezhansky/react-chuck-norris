@@ -1,30 +1,30 @@
-import React, { useState } from 'react'
-import FavoriteCard from './FavoriteCard/FavoriteCard'
-import styles from './FavoriteCards.module.scss'
-import {useDispatch, useSelector} from 'react-redux'
-import { favoriteCardChangeOrderAction } from '../../store/favorites/actions'
+import React, { useState } from 'react';
+import {useDispatch, useSelector} from 'react-redux';
+import FavoriteCard from './FavoriteCard/FavoriteCard';
+import styles from './FavoriteCards.module.scss';
+import { favoriteCardChangeOrderAction } from '../../store/favorites/actions';
 
 const FavoriteCards = () => {
-  const favoriteCards = useSelector(state => state.favorite)
+  const favoriteCards = useSelector((state) => state.favorite);
 
-  const [currentFavoriteCard, setCurrentFavoriteCard] = useState(null)
-  const dispatch = useDispatch()
+  const [currentFavoriteCard, setCurrentFavoriteCard] = useState(null);
+  const dispatch = useDispatch();
 
   const dragStartHandler = (e, favoriteCard) => {
-    setCurrentFavoriteCard(favoriteCard)
-  }
+    setCurrentFavoriteCard(favoriteCard);
+  };
   const dragEndHandler = (e) => {
-      e.target.style.background = 'white'
-  }
+      e.target.style.background = 'white';
+  };
   const dragOverHandler = (e) => {
-      e.preventDefault()
-      e.target.style.background = 'grey'
-  }
+      e.preventDefault();
+      e.target.style.background = 'grey';
+  };
   const dropHandler = (e, favoriteCard) => {
-      e.preventDefault()
-      dispatch(favoriteCardChangeOrderAction(favoriteCard, currentFavoriteCard))
-      e.target.style.background = 'white'
-  }
+      e.preventDefault();
+      dispatch(favoriteCardChangeOrderAction(favoriteCard, currentFavoriteCard));
+      e.target.style.background = 'white';
+  };
   const sortFavorites = (a, b) => {
     if (a.order > b.order) {
       return 1;
@@ -34,9 +34,9 @@ const FavoriteCards = () => {
 
   return (
     <ul className={styles.FavoriteCards}>
-      {favoriteCards.sort(sortFavorites).map(favoriteCard => (
-        <FavoriteCard 
-          favoriteCard={favoriteCard} 
+      {favoriteCards.sort(sortFavorites).map((favoriteCard) => (
+        <FavoriteCard
+          favoriteCard={favoriteCard}
           key={favoriteCard.id}
           dragStart={dragStartHandler}
           dragEnd={dragEndHandler}
@@ -45,7 +45,7 @@ const FavoriteCards = () => {
         />
       ))}
     </ul>
-  )
-}
+  );
+};
 
 export default FavoriteCards;
