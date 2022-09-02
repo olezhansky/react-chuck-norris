@@ -6,7 +6,7 @@ import { createStore, applyMiddleware, compose, combineReducers } from 'redux';
 import thunk from 'redux-thunk';
 import favoriteReducer from './favorites/reducer';
 import jokesReducer from './jokes/reducer';
-import * as favoriteTypes from './favorites/types';
+import * as types from './favorites/types';
 
 const devTools = window.__REDUX_DEVTOOLS_EXTENSION__
   ? window.__REDUX_DEVTOOLS_EXTENSION__()
@@ -18,9 +18,9 @@ const localStorageMiddleware =
   (action) => {
     const result = next(action);
     if (
-      action.type === favoriteTypes.ADD_FAVORITE ||
-      action.type === favoriteTypes.REMOVE_FAVORITE ||
-      action.type === favoriteTypes.FAVORITE_CARD_CHANGE_ORDER
+      action.type === types.ADD_FAVORITE ||
+      action.type === types.REMOVE_FAVORITE ||
+      action.type === types.FAVORITE_CARD_CHANGE_ORDER
     ) {
       const { favorite } = getState();
       const stringifiedFavorite = JSON.stringify(favorite);
